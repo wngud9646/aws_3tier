@@ -1,0 +1,104 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:257840391579:task-definition/was-project2:2",
+    "containerDefinitions": [
+        {
+            "name": "was",
+            "image": "257840391579.dkr.ecr.ap-northeast-2.amazonaws.com/project2:a0b854c255724b1a9b214847b2e14297faa887d0",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "name": "was-3000-tcp",
+                    "containerPort": 3000,
+                    "hostPort": 3000,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "secrets": [
+                {
+                    "name": "MONGO_HOSTNAME",
+                    "valueFrom": "arn:aws:secretsmanager:ap-northeast-2:257840391579:secret:project2/mongo-9GmiK2:MONGO_HOSTNAME::"
+                },
+                {
+                    "name": "MONGO_USERNAME",
+                    "valueFrom": "arn:aws:secretsmanager:ap-northeast-2:257840391579:secret:project2/mongo-9GmiK2:MONGO_USERNAME::"
+                },
+                {
+                    "name": "MONGO_PASSWORD",
+                    "valueFrom": "arn:aws:secretsmanager:ap-northeast-2:257840391579:secret:project2/mongo-9GmiK2:MONGO_PASSWORD::"
+                }
+            ],
+            "ulimits": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-create-group": "true",
+                    "awslogs-group": "/ecs/was-project2",
+                    "awslogs-region": "ap-northeast-2",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            }
+        }
+    ],
+    "family": "was-project2",
+    "taskRoleArn": "arn:aws:iam::257840391579:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::257840391579:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "revision": 2,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "ecs.capability.secrets.asm.environment-variables"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "1024",
+    "memory": "3072",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "registeredAt": "2023-04-28T10:06:10.080Z",
+    "registeredBy": "arn:aws:iam::257840391579:root",
+    "tags": []
+}

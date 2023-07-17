@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  app:
+    image: wngud9646/project2:1.2
+    ports:
+      - '3000:3000'
+    container_name: servers
+    environment:
+      MONGO_URL: ${MONGO_URL}
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo
+    ports:
+      - '27017:27017'
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
